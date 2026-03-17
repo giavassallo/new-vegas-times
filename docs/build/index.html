@@ -39,6 +39,137 @@ documentation for details.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
+<section id="news-app">
+<h1>News App<a class="headerlink" href="#news-app" title="Link to this heading">¶</a></h1>
+<section id="module-news_site.news.models">
+<span id="models"></span><h2>Models<a class="headerlink" href="#module-news_site.news.models" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="news_site.news.models.Article">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">news_site.news.models.</span></span><span class="sig-name descname"><span class="pre">Article</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.models.Article" title="Link to this definition">¶</a></dt>
+<dd><p>Represents a news article</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="news_site.news.models.Article.DoesNotExist">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#news_site.news.models.Article.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="news_site.news.models.Article.MultipleObjectsReturned">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#news_site.news.models.Article.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="news_site.news.models.CustomUser">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">news_site.news.models.</span></span><span class="sig-name descname"><span class="pre">CustomUser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.models.CustomUser" title="Link to this definition">¶</a></dt>
+<dd><p>Custom user model that assigns a role per user</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="news_site.news.models.CustomUser.DoesNotExist">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#news_site.news.models.CustomUser.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="news_site.news.models.CustomUser.MultipleObjectsReturned">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#news_site.news.models.CustomUser.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="news_site.news.models.CustomUser.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.models.CustomUser.save" title="Link to this definition">¶</a></dt>
+<dd><p>Save the current instance. Override this in a subclass if you want to
+control the saving process.</p>
+<p>The ‘force_insert’ and ‘force_update’ parameters can be used to insist
+that the “save” must be an SQL insert or update (or equivalent for
+non-SQL backends), respectively. Normally, they should not be set.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="news_site.news.models.Newsletter">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">news_site.news.models.</span></span><span class="sig-name descname"><span class="pre">Newsletter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.models.Newsletter" title="Link to this definition">¶</a></dt>
+<dd><p>Collection of articles written by jounalists</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="news_site.news.models.Newsletter.DoesNotExist">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#news_site.news.models.Newsletter.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="news_site.news.models.Newsletter.MultipleObjectsReturned">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#news_site.news.models.Newsletter.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="news_site.news.models.Publisher">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">news_site.news.models.</span></span><span class="sig-name descname"><span class="pre">Publisher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.models.Publisher" title="Link to this definition">¶</a></dt>
+<dd><p>Represents a publishing organization</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="news_site.news.models.Publisher.DoesNotExist">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#news_site.news.models.Publisher.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="news_site.news.models.Publisher.MultipleObjectsReturned">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#news_site.news.models.Publisher.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-news_site.news.views">
+<span id="views"></span><h2>Views<a class="headerlink" href="#module-news_site.news.views" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="news_site.news.views.approve_article">
+<span class="sig-prename descclassname"><span class="pre">news_site.news.views.</span></span><span class="sig-name descname"><span class="pre">approve_article</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.views.approve_article" title="Link to this definition">¶</a></dt>
+<dd><p>Editor approves article</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="news_site.news.views.approved_article_api">
+<span class="sig-prename descclassname"><span class="pre">news_site.news.views.</span></span><span class="sig-name descname"><span class="pre">approved_article_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.views.approved_article_api" title="Link to this definition">¶</a></dt>
+<dd><p>Receives approved articles via POST</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="news_site.news.views.article_detail">
+<span class="sig-prename descclassname"><span class="pre">news_site.news.views.</span></span><span class="sig-name descname"><span class="pre">article_detail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.views.article_detail" title="Link to this definition">¶</a></dt>
+<dd><p>Show full article</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="news_site.news.views.article_list">
+<span class="sig-prename descclassname"><span class="pre">news_site.news.views.</span></span><span class="sig-name descname"><span class="pre">article_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.views.article_list" title="Link to this definition">¶</a></dt>
+<dd><p>Display approved articles to readers</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="news_site.news.views.create_article">
+<span class="sig-prename descclassname"><span class="pre">news_site.news.views.</span></span><span class="sig-name descname"><span class="pre">create_article</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.views.create_article" title="Link to this definition">¶</a></dt>
+<dd><p>Journalists create new articles</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="news_site.news.views.editor_dashboard">
+<span class="sig-prename descclassname"><span class="pre">news_site.news.views.</span></span><span class="sig-name descname"><span class="pre">editor_dashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.views.editor_dashboard" title="Link to this definition">¶</a></dt>
+<dd><p>Editor dashboard</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="news_site.news.views.newsletter_list">
+<span class="sig-prename descclassname"><span class="pre">news_site.news.views.</span></span><span class="sig-name descname"><span class="pre">newsletter_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.views.newsletter_list" title="Link to this definition">¶</a></dt>
+<dd><p>Display newsletters</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="news_site.news.views.review_articles">
+<span class="sig-prename descclassname"><span class="pre">news_site.news.views.</span></span><span class="sig-name descname"><span class="pre">review_articles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#news_site.news.views.review_articles" title="Link to this definition">¶</a></dt>
+<dd><p>Editors review unapproved articles</p>
+</dd></dl>
+
+</section>
+</section>
 
 
           </div>

@@ -15,3 +15,19 @@ documentation for details.
    :maxdepth: 2
    :caption: Contents:
 
+
+News App 
+========
+
+Models
+------
+
+.. automodule:: news_site.news.models 
+   :members:
+
+Views
+-----
+
+.. automodule:: news_site.news.views 
+   :members:
+

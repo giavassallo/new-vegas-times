@@ -8,8 +8,21 @@
 
 import os
 import sys
+import django
 
-sys.path.insert(0, os.path.abspath('../../'))
+
+sys.path.insert(0, os.path.abspath('../../news_application'))
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'news_site.news_site.settings'
+
+from django.conf import settings 
+
+settings.DATABASES['default'] = {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': ':memory',
+}
+
+django.setup()
 
 
 project = 'News_Application'
