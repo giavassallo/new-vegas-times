@@ -3,45 +3,26 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 
 from .views import (
-    ArticleListAPIView,
+    ArticleListCreateAPIView,
     ArticleDetailAPIView,
-    ArticleCreateAPIView,
     ArticleUpdateAPIView,
     ArticleDeleteAPIView,
     SubscribedArticlesAPIView,
+    
 )
+
 
 urlpatterns = [
 
     path("api/token/", obtain_auth_token),
 
-    path(
-        "articles/",
-        ArticleListAPIView.as_view(),
-    ),
+    path("api/articles/", ArticleListCreateAPIView.as_view()),
 
-    path(
-        "articles/<int:pk>/",
-        ArticleDetailAPIView.as_view(),
-    ),
+    path("api/articles/<int:pk>/", ArticleDetailAPIView.as_view()),
 
-    path(
-        "articles/create/",
-        ArticleCreateAPIView.as_view(),
-    ),
+    path("api/articles/<int:pk>/update/", ArticleUpdateAPIView.as_view()),
 
-    path(
-        "articles/<int:pk>/update/",
-        ArticleUpdateAPIView.as_view(),
-    ),
+    path("api/articles/<int:pk>/delete/", ArticleDeleteAPIView.as_view()),
 
-    path(
-        "articles/<int:pk>/delete/",
-        ArticleDeleteAPIView.as_view(),
-    ),
-
-    path(
-        "articles/subscribed/",
-        SubscribedArticlesAPIView.as_view(),
-    ),
+    path("api/articles/subscribed/", SubscribedArticlesAPIView.as_view()),
 ]

@@ -8,7 +8,7 @@ class IsJournalist(BasePermission):
 
     def has_permission(self, request, view):
 
-        return request.user.role == "journalist"
+        return request.user.is_authenticated and request.user.role == "journalist"
 
 
 class IsEditor(BasePermission):
@@ -18,7 +18,7 @@ class IsEditor(BasePermission):
 
     def has_permission(self, request, view):
 
-        return request.user.role == "editor"
+        return request.user.is_authenticated and request.user.role == "editor"
 
 
 class IsReader(BasePermission):
@@ -28,4 +28,4 @@ class IsReader(BasePermission):
 
     def has_permission(self, request, view):
 
-        return request.user.role == "reader"
+        return request.user.is_authenticated and request.user.role == "reader"

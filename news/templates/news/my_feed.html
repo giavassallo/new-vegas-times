@@ -1,0 +1,17 @@
+{% extends "news/base.html" %}
+
+{% block content %}
+
+<h2>My Feed</h2>
+
+{% for article in articles %}
+    <div>
+        <h3>{{ article.title }}</h3>
+        <p>{{ article.content }}</p>
+        <small>By {{ article.author }}</small>
+    </div>
+{% empty %}
+    <p>No articles yet.</p>
+{% endfor %}
+
+{% endblock %}

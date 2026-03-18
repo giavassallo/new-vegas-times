@@ -2,14 +2,32 @@
 
 {% block content %}
 
+
+{% if user.is_authenticated %}
+    <h3>Journalists</h3>
+
+    {% for user_obj in users %}
+        <p>
+            {{ user_obj.username }}
+
+            {% if user_obj in user.subscribed_journalists.all %}
+                <a href="{% url 'unsubscribe_journalist' user_obj.id %}">Unsubscribe</a>
+            {% else %}
+                <a href="{% url 'subscribe_journalist' user_obj.id %}">Subscribe</a>
+            {% endif %}
+        </p>
+    {% endfor %}
+{% endif %}
+
+
 <h2 style="text-align:center;">Latest Articles</h2>
 
-{% for article in artciles %}
+{% for article in articles %}
 
 <div class="artilce-card">
 
 <h3>
-<a href="article/{{ artcile.id }}/">
+<a href="article/{{ article.id }}/">
     {{ article.title }}
 </a>
 </h3>

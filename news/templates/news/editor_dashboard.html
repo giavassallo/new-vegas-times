@@ -1,3 +1,7 @@
+{% extends "news/base.html" %}
+
+{% block content %}
+
 <h1>Editor Dashboard</h1>
 
 <h2>Articles Awaiting Review</h2>
@@ -12,3 +16,5 @@
 {% empty %}
     <p>No articles to review.</p>
 {% endfor %}
+
+{% endblock %}

@@ -5,22 +5,25 @@ from rest_framework.response import Response
 from news.models import Article
 from .serializers import ArticleSerializer
 from .permissions import IsJournalist, IsEditor
-
-from news.models import Article
-
-from .serializers import ArticleSerializer
-from .permissions import IsJournalist, IsEditor
+from rest_framework.permissions import IsAuthenticated 
 
 
-class ArticleListAPIView(generics.ListAPIView):
+class ArticleListCreateAPIView(generics.ListCreateAPIView):
     """
-    GET /api/articles/
-    Returns all approved articles.
+    GET  /api/articles/  -> list approved articles
+    POST /api/articles/  -> create article (journalists only)
     """
 
     queryset = Article.objects.filter(approved=True)
     serializer_class = ArticleSerializer
-    permission_classes = [AllowAny]
+
+    def get_permissions(self):
+        if self.request.method == "POST":
+            return [IsAuthenticated(), IsJournalist()]
+        return [IsAuthenticated()]
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
 class ArticleDetailAPIView(generics.RetrieveAPIView):
@@ -30,20 +33,7 @@ class ArticleDetailAPIView(generics.RetrieveAPIView):
 
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-
-
-class ArticleCreateAPIView(generics.CreateAPIView):
-    """
-    POST /api/articles/
-    Journalist creates article.
-    """
-
-    serializer_class = ArticleSerializer
-    permission_classes = [IsJournalist]
-
-    def perform_create(self, serializer):
-
-        serializer.save(author=self.request.user)
+    permission_classes = [IsAuthenticated]
 
 
 class ArticleUpdateAPIView(generics.UpdateAPIView):
@@ -78,11 +68,10 @@ class SubscribedArticlesAPIView(APIView):
         publishers = user.subscribed_publishers.all()
         journalists = user.subscribed_journalists.all()
 
-        articles = Article.objects.filter(
-            publisher__in=publishers
-        ) | Article.objects.filter(
-            author__in=journalists
-        )
+        articles = (
+            Article.objects.filter(publisher__in=publishers) |
+            Article.objects.filter(author__in=journalists)
+        ).filter(approved=True).distinct()
 
         serializer = ArticleSerializer(articles, many=True)
 

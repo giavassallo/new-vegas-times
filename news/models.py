@@ -10,7 +10,7 @@ class CustomUser(AbstractUser):
 
     ROLE_READER = "reader"
     ROLE_EDITOR = "editor"
-    ROLE_JOUNALIST = "jounalist"
+    ROLE_JOUNALIST = "journalist"
 
     ROLE_CHOICES = [
         (ROLE_READER, "Reader"),

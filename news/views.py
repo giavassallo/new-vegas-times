@@ -1,9 +1,32 @@
 import json
 from django.http import JsonResponse
+from django.http import HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Article, Newsletter
+from django.urls import reverse 
+from .forms import CustomUserCreationForm
+from .models import CustomUser
+
+
+def register(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        role = request.POST.get("role")  
+
+        user = CustomUser.objects.create_user(
+            username=username,
+            password=password
+        )
+
+        user.role = role 
+        user.save()
+
+        return redirect("login")
+
+    return render(request, "news/register.html")
 
 
 @csrf_exempt
@@ -29,12 +52,14 @@ def article_list(request):
     """
 
     articles = Article.objects.filter(approved=True)
+    users = CustomUser.objects.filter(role="journalist")
 
     return render(
         request,
-        "news/article_list.html",
-        {"articles": articles},
-    )
+        "news/article_list.html", {
+        "articles": articles,
+        "users": users,
+    })
 
 
 def article_detail(request, pk):
@@ -57,11 +82,13 @@ def create_article(request):
     Journalists create new articles
     """
 
+    if not request.user.is_authenticated:
+        return HttpResponseForbidden()
+
     if request.user.role != "journalist":
-        return redirect("/")
+        return HttpResponseForbidden()
 
     if request.method == "POST":
-
         title = request.POST.get("title")
         content = request.POST.get("content")
 
@@ -71,7 +98,7 @@ def create_article(request):
             author=request.user,
         )
 
-        return redirect("/")
+        return redirect("article_list")
 
     return render(request, "news/article_create.html")
 
@@ -141,3 +168,25 @@ def editor_dashboard(request):
         "news/editor_dashboard.html",
         {"articles": articles},
     )
+
+
+@login_required
+def subscribe_journalist(request, user_id):
+    journalist = get_object_or_404(CustomUser, id=user_id, role="journalist")
+    request.user.subscribed_journalists.add(journalist)
+    return redirect("article_list")
+
+
+@login_required
+def unsubscribe_journalist(request, user_id):
+    journalist = get_object_or_404(CustomUser, id=user_id, role="journalist")
+    request.user.subscribed_journalists.remove(journalist)
+    return redirect("article_list")
+
+
+@login_required
+def my_feed(request):
+    journalists = request.user.subscribed_journalists.all()
+    articles = Article.objects.filter(author__in=journalists, approved=True)
+
+    return render(request, "news/article_list.html", {"articles": articles})
