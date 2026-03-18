@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | New Vegas Times</title>
+
+    <link rel="stylesheet" href="{% static 'news/css/style.css' %}">
+
+</head>
+
+<body class="fallout-bg">
+
+    <div class="login-container">
+
+        <h1 class="site-title">New Vegas Times</h1>
+
+        <h2 class="login-subtitle">Secure Terminal Login</h2>
+
+        <form method="post" class="login-form">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="vault-button">
+                Access Terminal
+            </button>
+        </form>
+
+    </div>
+
+</body>
+</html>
